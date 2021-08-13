@@ -1,23 +1,23 @@
-const HTTPHandler = require("../ports/HTTPHandler")
+const HTTPHandler = require('../ports/HTTPHandler');
 
-const getStocksRequest = async(stockID) => {
-    let res;
+const getStocksRequest = async (stockID) => {
+  let res;
 
-    try {   
-        const stockData = await HTTPHandler.retrieveStock(stockID)
-        
-        res = {
-            'statusCode': 200,
-            'body': JSON.stringify({
-                message: stockData,
-            })
-        }
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
+  try {
+    const stockData = await HTTPHandler.retrieveStock(stockID);
 
-    return res;
-} 
+    res = {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: stockData,
+      }),
+    };
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
 
-module.exports = getStocksRequest
+  return res;
+};
+
+module.exports = getStocksRequest;
